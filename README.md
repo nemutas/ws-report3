@@ -1,11 +1,11 @@
 # About
 
-This repository is [Three.js](https://threejs.org/) template with [Astro](https://astro.build/).
+WebGL Schoolの第3回目の講義の課題です。
 
 https://nemutas.github.io/ws-report3/
 
-# Using
+<img src='https://github.com/nemutas/ws-report3/assets/46724121/98a87bb1-606b-4089-9d89-31e4ea4d7fb7' width='800' />
 
-- VSCode
-- [WebGL GLSL Editor](https://marketplace.visualstudio.com/items?itemName=raczzalan.webgl-glsl-editor) (v1.3.0 -> If the extension is set to glsl, errors originating from threejs built-in variables will not occur.)
-- [Prettier Plugin for Astro](https://github.com/withastro/prettier-plugin-astro)
+# Requirement
+
+<img src='https://github.com/nemutas/ws-report3/assets/46724121/1e321b04-e40c-4573-8828-dc37dc13546b' width='800' />
