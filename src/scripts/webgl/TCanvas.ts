@@ -110,6 +110,9 @@ export class TCanvas {
     gl.scene.add(mesh2)
   }
 
+  private dummyVec3 = new THREE.Vector3()
+  private dummyQuaternion = new THREE.Quaternion()
+
   private intersection() {
     const origin = gl.camera.position.clone().multiplyScalar(-1)
     const direction = gl.camera.position.clone().normalize()
@@ -119,18 +122,18 @@ export class TCanvas {
 
     if (0 < intersects.length) {
       const plane = gl.getMesh('plane')
-      const subVec = new THREE.Vector3().subVectors(intersects[0].point, plane.position)
+      const subVec = this.dummyVec3.copy(intersects[0].point).sub(plane.position)
 
       if (intersects[0].point.normalize().sub(plane.position.clone().normalize()).length() < 0.01) return
 
       const orgPos = plane.position.clone()
       plane.position.add(subVec.multiplyScalar(0.03)).normalize().multiplyScalar(plane.userData.orbitRadius)
-      const planeDirection = plane.position.clone().sub(orgPos).normalize()
 
+      const planeDirection = plane.position.clone().sub(orgPos).normalize()
       const cos = this.prevPlaneDirection.dot(planeDirection)
       const angle = Math.acos(cos)
       const rotateAxis = this.prevPlaneDirection.cross(planeDirection).normalize()
-      const q = new THREE.Quaternion().setFromAxisAngle(rotateAxis, angle)
+      const q = this.dummyQuaternion.setFromAxisAngle(rotateAxis, angle)
       plane.quaternion.premultiply(q)
 
       this.prevPlaneDirection.copy(planeDirection).normalize()
